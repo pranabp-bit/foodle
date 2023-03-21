@@ -82,7 +82,6 @@ const Navbar = () => {
                           <ul className='app__navbar-links'>
                             <li className='p__opensans'> <LoginIcon style={{ marginRight: "0.5rem" }} /><a href = "/login"> Login </a></li>
                             <li className='p__opensans'> <AppRegistrationIcon style={{ marginRight: "0.5rem" }} /><a href = "/register"> Register </a></li>
-                            <li className='p__opensans' onClick={handleLogout}><ExitToAppIcon style={{ marginRight: "0.5rem" }} />Logout</li>
                           </ul>
                            
                         </div>
