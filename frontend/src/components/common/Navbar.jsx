@@ -102,7 +102,7 @@ const Navbar = () => {
                                 <li className='p__opensans'> <EqualizerIcon style={{ marginRight: "0.5rem" }} /><a href = "/statistics"> Statistics </a></li>
                             }
                             <li className='p__opensans'> <PersonIcon style={{ marginRight: "0.5rem" }} /><a href = "/profile"> Profile </a></li>
-                            <Button color="inherit" onClick={handleLogout}><ExitToAppIcon style={{ marginRight: "0.5rem" }} />Logout</Button>
+                            <li className='p__opensans' onClick={handleLogout}><ExitToAppIcon style={{ marginRight: "0.5rem" }} />Logout</li>
                           </ul>
                             
                         </div>
