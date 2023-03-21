@@ -2,13 +2,8 @@ import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import {MdOutlineRestaurantMenu } from 'react-icons/md';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import HomeIcon from '@mui/icons-material/Home';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import PersonIcon from '@mui/icons-material/Person';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
@@ -16,8 +11,6 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import EqualizerIcon from '@mui/icons-material/Equalizer';
 import LoginIcon from '@mui/icons-material/Login';
 import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import FastfoodIcon from '@mui/icons-material/Fastfood';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 
@@ -67,23 +60,20 @@ const Navbar = () => {
     <div className='app__navbar-logo'>
       <a href = "/"><img src = {images.foodle} alt = "app logo" /> </a>
     </div>
-    {/* <ul className='app__navbar-links'>
-      <li className='p__opensans'> <a href = "#login"> Login </a></li>
-    </ul> */}
+
 
 {user_is_authenticated() ?
                         <div>
                           <ul className='app__navbar-links'>
                             <li className='p__opensans'> <ShoppingCartIcon style={{ marginRight: "0.5rem" }} /><a href = "/orders"> Orders </a></li>
-                            {/* <li className='p__opensans'> <FavoriteIcon style={{ marginRight: "0.5rem" }} /><a href = "/wishlist"> Wishlist </a></li> */}
-                            {/* <li className='p__opensans'> <a href = "#login"> Login </a></li> */}
+                            
                             {user_type() === 'vendor' ?
                                 <li className='p__opensans'> <EqualizerIcon style={{ marginRight: "0.5rem" }} /><a href = "/statistics"> Statistics </a></li>
                                 :
                                 <li className='p__opensans'> <AccountBalanceWalletIcon style={{ marginRight: "0.5rem" }} />Wallet: Rs. {wallet}</li>
                             }
                             <li className='p__opensans'> <PersonIcon style={{ marginRight: "0.5rem" }} /><a href = "/profile"> Profile </a></li>
-                            <Button color="inherit" onClick={handleLogout}><ExitToAppIcon style={{ marginRight: "0.5rem" }} />Logout</Button>
+                            <li className='p__opensans' onClick={handleLogout}><ExitToAppIcon style={{ marginRight: "0.5rem" }} />Logout</li>
                           </ul>
                             
                         </div>
@@ -92,22 +82,13 @@ const Navbar = () => {
                           <ul className='app__navbar-links'>
                             <li className='p__opensans'> <LoginIcon style={{ marginRight: "0.5rem" }} /><a href = "/login"> Login </a></li>
                             <li className='p__opensans'> <AppRegistrationIcon style={{ marginRight: "0.5rem" }} /><a href = "/register"> Register </a></li>
+                            <li className='p__opensans' onClick={handleLogout}><ExitToAppIcon style={{ marginRight: "0.5rem" }} />Logout</li>
                           </ul>
                            
                         </div>
                     }
 
-    {/* <div className='app__navbar-login'>
-      <a href="login" className='p__opensans'>Login</a>
-      <div/>
-      <a href="register" className='p__opensans'>Register</a>
-      <div/>
-      <a href="profile" className='p__opensans'>Profile</a>
-      <div/>
-      <a href="dashboard" className='p__opensans'>Dashboard</a>
-      <div/>
-      <a href="wishlist" className='p__opensans'>Wishlist</a>
-    </div> */}
+
     <div className='app__navbar-smallscreen'>
       <GiHamburgerMenu color = "#fff" fontSize={27} onClick = {() => setToggleMenu(true)}/>
       {toggleMenu && (
@@ -135,9 +116,6 @@ const Navbar = () => {
                             
                         </div>
                     }
-        {/* <ul className='app__navbar-smallscreen_links'>
-      <li className='p__opensans'> <a href = "#login"> Login </a></li>
-      </ul> */}
       </div>
   )}
     </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import BuyerDashboard from '../Buyer/BuyerDashboard';
-import VendorDashboard from '../Vendor/VendorDashboard';
+import VendorDashboard from '../Vendor/Vendordashboard';
 import image from '../../../content/foodle.jpg';
 import { user_is_authenticated, user_type } from '../../../lib/auth';
 
