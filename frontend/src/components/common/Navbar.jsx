@@ -98,8 +98,10 @@ const Navbar = () => {
                           <ul className='app__navbar-smallscreen_links'>
                             <li className='p__opensans'> <ShoppingCartIcon style={{ marginRight: "0.5rem" }} /><a href = "/orders"> Orders </a></li>
                             {/* <li className='p__opensans'> <FavoriteIcon style={{ marginRight: "0.5rem" }} /><a href = "/wishlist"> Wishlist </a></li> */}
-                            {user_type() === 'vendor' &&
+                            {user_type() === 'vendor' ?
                                 <li className='p__opensans'> <EqualizerIcon style={{ marginRight: "0.5rem" }} /><a href = "/statistics"> Statistics </a></li>
+                                :
+                                <li className='p__opensans'> <AccountBalanceWalletIcon style={{ marginRight: "0.5rem" }} />Wallet: Rs. {wallet}</li>
                             }
                             <li className='p__opensans'> <PersonIcon style={{ marginRight: "0.5rem" }} /><a href = "/profile"> Profile </a></li>
                             <li className='p__opensans' onClick={handleLogout}><ExitToAppIcon style={{ marginRight: "0.5rem" }} />Logout</li>
