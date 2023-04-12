@@ -125,22 +125,34 @@ exports.editItem = async (req, res) => {
 // Remove an item from the database
 exports.deleteItem = async (req, res) => {
     try {
-        const item = await Item.findByIdAndDelete(req.body.item_id);
-        const order = await Order.deleteMany({
-            item_id: req.body.item_id
+        const orders = await Order.find({
+            item_id: req.body.item_id,
+            state: { $in: ["PLACED", "ACCEPTED", "COOKING", "READY FOR PICKUP"] } 
         });
-        const buyer = await Buyer.updateMany({
-            favourite_items: {
-                $in: [req.body.item_id]
-            }
-        }, {
-            $pull: {
-                favourite_items: req.body.item_id
-            }
-        });
+        if(orders.length>0) {
+            return res.status(409).json({
+                error: "Item is currently a part of a placed order. Delete once the order is 'COMPLETED', or 'REJECTED'",
+            });
+        }
+        else{
+            const item = await Item.findByIdAndDelete(req.body.item_id);
+            const order = await Order.deleteMany({
+                item_id: req.body.item_id
+            });
+            const buyer = await Buyer.updateMany({
+                favourite_items: {
+                    $in: [req.body.item_id]
+                }
+            }, {
+                $pull: {
+                    favourite_items: req.body.item_id
+                }
+            });
 
-        return res.status(200).json(item);
+            return res.status(200).json(item);
+        }
     } catch (err) {
+        console.log("IDher error aaya")
         return res.status(500).json({
             error: err
         });
