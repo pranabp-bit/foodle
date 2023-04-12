@@ -30,7 +30,7 @@ const ItemBuy = ({ item, vendor }) => {
     // To handle number change
     const handleNumberChange = event => {
         setQuantity(event.target.value);
-        setError(validator.isEmpty(event.target.value) || !validator.isNumeric(event.target.value) || event.target.value < 0);
+        setError(validator.isEmpty(event.target.value) || !validator.isInt(event.target.value) || event.target.value <= 0);
     }
 
     // to calculate total price
