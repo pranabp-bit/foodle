@@ -68,6 +68,12 @@ exports.addOrder = async (req, res) => {
             cost: req.body.cost,
         });
 
+        if (req.body.quantity <= 0) {
+            return res.status(403).json({
+                error: "Quantity should be greater than zero"
+            });
+        }
+
         const item = await Item.findById(req.body.item_id);
 
         if (!item) {
