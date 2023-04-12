@@ -152,7 +152,6 @@ exports.deleteItem = async (req, res) => {
             return res.status(200).json(item);
         }
     } catch (err) {
-        console.log("IDher error aaya")
         return res.status(500).json({
             error: err
         });
