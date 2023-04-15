@@ -90,10 +90,19 @@ const BuyerDashboard = () => {
         closingTime = new Date(0, 0, 0, closingTime[0], closingTime[1], 0).getTime();
         const currentTime = new Date(0, 0, 0, new Date().getHours(), new Date().getMinutes(), 0).getTime();
 
-        if (currentTime < openingTime || currentTime > closingTime)
-            return false;
-        else
-            return true;
+        if(openingTime < closingTime){
+            if (currentTime < openingTime || currentTime > closingTime)
+                return false;
+            else
+                return true;
+        }
+        else if(openingTime > closingTime){
+            if (currentTime > openingTime || currentTime < closingTime)
+                return true;
+            else
+                return false;
+        }
+        else return true;
     }
 
     // sort the items
