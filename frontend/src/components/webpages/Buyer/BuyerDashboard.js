@@ -96,12 +96,13 @@ const BuyerDashboard = () => {
             else
                 return true;
         }
-        else{
+        else if(openingTime > closingTime){
             if (currentTime > openingTime || currentTime < closingTime)
                 return true;
             else
                 return false;
         }
+        else return true;
     }
 
     // sort the items
